@@ -1,19 +1,9 @@
 {
-  "name": "isostring",
-  "repo": "segmentio/isostring",
-  "description": "Decides whether a string matches an isodate format",
+  "name": "is-isodate",
+  "repo": "segmentio/is-isodate",
   "version": "0.0.1",
-  "keywords": [
-    "isoformat",
-    "iso8601",
-    "date",
-    "isostring"
-  ],
-  "dependencies": {},
-  "development": {},
   "license": "MIT",
-  "main": "index.js",
-  "scripts": [
-    "index.js"
-  ]
+  "description": "Test whether a string matches the ISO date format.",
+  "keywords": ["iso", "format", "iso8601", "date", "isostring"],
+  "scripts": ["index.js"]
 }

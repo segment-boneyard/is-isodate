@@ -1,22 +1,35 @@
 
-module.exports = isDate;
+/**
+ * Expose `isIsodate`.
+ */
+
+module.exports = isIsodate;
 
 
 /**
- * Matching format per: http://www.w3.org/TR/NOTE-datetime
+ * ISO date matcher.
+ *
+ * http://www.w3.org/TR/NOTE-datetime
  */
 
-var isoformat = '^\\d{4}-\\d{2}-\\d{2}' +        // Match YYYY-MM-DD
-                '((T\\d{2}:\\d{2}(:\\d{2})?)' +  // Match THH:mm:ss
-                '(\\.\\d{1,6})?' +               // Match .sssss
-                '(Z|(\\+|-)\\d{2}:\\d{2})?)?$';  // Time zone (Z or +hh:mm)
+var matcher = new RegExp(
+  '^\\d{4}-\\d{2}-\\d{2}' +        // Match YYYY-MM-DD
+  '((T\\d{2}:\\d{2}(:\\d{2})?)' +  // Match THH:mm:ss
+  '(\\.\\d{1,6})?' +               // Match .sssss
+  '(Z|(\\+|-)\\d{2}:\\d{2})?)?$'   // Time zone (Z or +hh:mm)
+);
 
 
-var matcher = new RegExp(isoformat);
+/**
+ * Test whether a `string` is an ISO date.
+ *
+ * @param {String} string
+ */
 
-
-function isDate (val) {
-  return typeof val === 'string' &&
-         matcher.test(val) &&
-         !isNaN(Date.parse(val));
+function isIsodate (string) {
+  return (
+    typeof string === 'string' &&
+    matcher.test(string) &&
+    !isNaN(Date.parse(string))
+  );
 }

@@ -1,19 +1,12 @@
 {
-  "name": "isostring",
+  "name": "is-isodate",
+  "repository": "git://github.com/segmentio/isostring.git",
   "version": "0.0.1",
-  "description": "Decides whether a string is a valid isodate format",
-  "keywords": [
-    "isostring",
-    "iso8601",
-    "date",
-    "format"
-  ],
-  "author": "Segmentio <friends@segment.io>",
-  "repository": { "type": "git", "url": "git://github.com/segmentio/isostring.git" },
+  "license": "MIT",
+  "description": "Test whether a string matches the ISO date format.",
+  "keywords": ["iso", "format", "iso8601", "date", "isostring"],
   "dependencies": {},
   "devDependencies": {
-    "mocha": "*",
-    "should": "*"
-  },
-  "main": "index"
+    "mocha": "*"
+  }
 }

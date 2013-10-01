@@ -1,25 +1,65 @@
-var isostring = require('..')
-  , should    = require('should');
 
+var assert = require('assert');
+var iso = require('..');
 
-describe('isostring', function () {
-  it('should validate invalid dates', function () {
-    isostring('2012-12-30').should.be.ok;
-    isostring('2012-12-30T20:10').should.be.ok;
-    isostring('2012-12-30T20:12Z').should.be.ok;
-    isostring('2012-12-30T20:12:22').should.be.ok;
-    isostring('2012-12-30T20:12:22+01:00').should.be.ok;
-    isostring('2012-12-30T20:12:22-05:00').should.be.ok;
-    isostring('2012-12-30T20:12:22.222').should.be.ok;
-    isostring('2012-12-30T20:12:22.222Z').should.be.ok;
-    isostring('2012-12-30T20:12:22.222222').should.be.ok;
-    isostring('2012-12-30T20:12:22.222').should.be.ok;
+describe('is-isodate', function () {
+  describe('true', function () {
+    it('2012-12-30', function () {
+      assert(iso('2012-12-30'));
+    });
+
+    it('2012-12-30T20:10', function () {
+      assert(iso('2012-12-30T20:10'));
+    });
+
+    it('2012-12-30T20:12Z', function () {
+      assert(iso('2012-12-30T20:12Z'));
+    });
+
+    it('2012-12-30T20:12:22', function () {
+      assert(iso('2012-12-30T20:12:22'));
+    });
+
+    it('2012-12-30T20:12:22+01:00', function () {
+      assert(iso('2012-12-30T20:12:22+01:00'));
+    });
+
+    it('2012-12-30T20:12:22-05:00', function () {
+      assert(iso('2012-12-30T20:12:22-05:00'));
+    });
+
+    it('2012-12-30T20:12:22.222', function () {
+      assert(iso('2012-12-30T20:12:22.222'));
+    });
+
+    it('2012-12-30T20:12:22.222Z', function () {
+      assert(iso('2012-12-30T20:12:22.222Z'));
+    });
+
+    it('2012-12-30T20:12:22.222222', function () {
+      assert(iso('2012-12-30T20:12:22.222222'));
+    });
+
+    it('2012-12-30T20:12:22.222', function () {
+      assert(iso('2012-12-30T20:12:22.222'));
+    });
   });
 
-  it('should not validate ambiguous or invalid dates', function () {
-    isostring('2012').should.not.be.ok;
-    isostring('2012-12').should.not.be.ok;
-    isostring('2012-12-30T').should.not.be.ok;
-    isostring('2012-12-30T10').should.not.be.ok;
+  describe('false', function () {
+    it('2012', function () {
+      assert(!iso('2012'));
+    });
+
+    it('2012-12', function () {
+      assert(!iso('2012-12'));
+    });
+
+    it('2012-12-30T', function () {
+      assert(!iso('2012-12-30T'));
+    });
+
+    it('2012-12-30T10', function () {
+      assert(!iso('2012-12-30T10'));
+    });
   });
 });
